@@ -26,7 +26,7 @@ class StoreStudent extends FormRequest
         return [
             'firstName' => 'required',
             'lastName' => 'required',
-            'facultyNumber' => 'bail|required|unique:students|min:10|max:10'
+            'facultyNumber' => 'bail|required|unique:students,faculty_number|min:10|max:10'
         ];
     }
 }

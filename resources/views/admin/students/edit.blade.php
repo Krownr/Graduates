@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Add Student
+                        Edit Student
                         <a href="{{ URL::to('admin/students') }}" class="pull-right">List all</a>
                     </div>
 
@@ -17,12 +17,14 @@
 
                         @include('admin.partials.error')
 
-                        <form method="post" action="{{url('admin/students')}}">
+                        <form method="post" action="{{action('Admin\StudentsController@update', $id)}}">
+                            <input name="_method" type="hidden" value="PATCH">
+
                             <div class="form-group row">
                                 {{csrf_field()}}
                                 <label for="facultyNumberInput" class="col-sm-2 col-form-label col-form-label-lg">Faculty Number</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control form-control-lg" id="facultyNumberInput" placeholder="student faculty number" name="facultyNumber">
+                                    <input type="text" class="form-control form-control-lg" id="facultyNumberInput" name="facultyNumber" value="{{ $student->faculty_number }}" readonly>
                                 </div>
                             </div>
 
@@ -30,7 +32,7 @@
                                 {{csrf_field()}}
                                 <label for="firstNameInput" class="col-sm-2 col-form-label col-form-label-lg">First Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control form-control-lg" id="firstNameInput" placeholder="student first name" name="firstName">
+                                    <input type="text" class="form-control form-control-lg" id="firstNameInput" name="firstName" value="{{ $student->first_name }}" readonly>
                                 </div>
                             </div>
 
@@ -38,7 +40,7 @@
                                 {{csrf_field()}}
                                 <label for="lastNameInput" class="col-sm-2 col-form-label col-form-label-lg">Last Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control form-control-lg" id="lastNameInput" placeholder="student last name" name="lastName">
+                                    <input type="text" class="form-control form-control-lg" id="lastNameInput" name="lastName" value="{{ $student->last_name }}" readonly>
                                 </div>
                             </div>
 
@@ -49,7 +51,7 @@
 
                                     <select name="speciality_id" class="form-control">
                                         <?php foreach($specialities as $key => $value):?>
-                                        <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                                        <option value="{{ $key }}" {{ ($key == $student->speciality_id) ? 'selected' : '' }} >{{ $value }}</option>
                                         <?php endforeach; ?>
                                     </select>
 
@@ -59,7 +61,7 @@
 
                             <div class="form-group row">
                                 <div class="col-md-2"></div>
-                                <input type="submit" class="btn btn-primary" value="Submit" >
+                                <input type="submit" class="btn btn-primary" value="Update" >
                             </div>
                         </form>
                     </div>

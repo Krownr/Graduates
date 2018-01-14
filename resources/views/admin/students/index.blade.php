@@ -11,7 +11,6 @@
                     </div>
 
                     <div class="panel-body">
-                        <!-- will be used to show any messages -->
                         @if (\Session::has('success'))
                             <div class="alert alert-info">{{\Session::get('success') }}</div>
                         @endif
@@ -33,10 +32,6 @@
                                     <td>{{ $value->first_name }} {{ $value->last_name }}</td>
                                     <td>{{ $value->faculty_number }}</td>
                                     <td>
-                                        <!-- show the subjects (uses the show method found at GET /admin/subjects/{id} -->
-                                        {{--<a class="btn btn-small btn-success" href="{{ URL::to('admin/subjects/' . $value->id) }}">Show subject</a>--}}
-
-                                        <!-- edit this subject (uses the edit method found at GET /admin/subjects/{id}/edit -->
                                         <a class="btn btn-small btn-info" href="{{ URL::to('admin/students/' . $value->id . '/edit') }}">Edit</a>
 
                                         <form action="{{action('Admin\StudentsController@destroy', $value->id )}}" method="post">

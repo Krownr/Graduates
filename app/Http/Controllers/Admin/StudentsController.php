@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudent;
+use App\Speciality;
 use App\Student;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,10 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('admin.students.create');
+        $specialities = Speciality::all()->pluck('name_long', 'id');
+        $specialities = array('0' => '-- Select Speciality --') + $specialities->all();
+
+        return view('admin.students.create')->with('specialities', $specialities);
     }
 
     /**
@@ -42,23 +46,13 @@ class StudentsController extends Controller
         $student = new Student([
             'first_name' => $request->get('firstName'),
             'last_name' => $request->get('lastName'),
-            'faculty_number' => $request->get('facultyNumber')
+            'faculty_number' => $request->get('facultyNumber'),
+            'speciality_id' => $request->get('speciality_id')
         ]);
 
         $student->save();
 
         return redirect('admin/students');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -69,7 +63,10 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        $specialities = Speciality::all()->pluck('name_long', 'id');
+
+        return view('admin.students.edit', compact('student', 'id'))->with('specialities', $specialities);
     }
 
     /**
@@ -81,7 +78,11 @@ class StudentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+        $student->speciality_id = $request->get('speciality_id');
+        $student->save();
+
+        return redirect('/admin/students')->with('success', 'The student was successfully updated!');
     }
 
     /**
@@ -92,6 +93,9 @@ class StudentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+
+        return redirect('/admin/students')->with('success', 'The student was deleted!');
     }
 }
