@@ -16,7 +16,7 @@ class SpecialitiesController extends Controller
      */
     public function index()
     {
-        $specialities = Speciality::all();
+        $specialities = Speciality::paginate(10);
 
         return view('admin.specialities.index')->with('specialities', $specialities);
     }

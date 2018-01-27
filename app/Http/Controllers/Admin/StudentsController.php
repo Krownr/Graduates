@@ -17,7 +17,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        $students = Student::paginate(10);
 
         return view('admin.students.index')->with('students', $students);
     }
