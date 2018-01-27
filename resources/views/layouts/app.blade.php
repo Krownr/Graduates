@@ -78,6 +78,7 @@
                                 <li><a href="{{ url('/') }}">Home</a></li>
                                 <li><a href="{{ route('students.index') }}">Students</a></li>
                                 <li><a href="{{ route('specialities.index') }}">Specialities</a></li>
+                                <li><a href="{{ route('supervisors.index') }}">Supervisors</a></li>
                                 @guest
                                     <li><a href="{{ route('login') }}">Login</a></li>
                                     <li><a href="{{ route('register') }}">Register</a></li>

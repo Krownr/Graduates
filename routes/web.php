@@ -23,3 +23,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
     Route::resource('specialities', 'SpecialitiesController');
     Route::resource('students', 'StudentsController');
 });
+
+Route::resource('supervisors', 'SupervisorsController');
