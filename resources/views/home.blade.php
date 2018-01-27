@@ -2,21 +2,20 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+    <div class="w3ls-title">
+        <h3 class="agileits-title w3title1">Welcome</h3>
+    </div>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+    <div class="grid_3 grid_5 agile">
+        <h3>Dashboard</h3>
+        <div class="well">
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
                 </div>
-            </div>
+            @endif
+
+            Here you will be able to check your result from your Thesis!
         </div>
     </div>
 </div>
