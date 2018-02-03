@@ -25,3 +25,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth'], 'namespace' 
 });
 
 Route::resource('supervisors', 'SupervisorsController');
+Route::resource('theses', 'ThesesController');

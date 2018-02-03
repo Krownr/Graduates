@@ -26,6 +26,7 @@
     <link href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" media="all">
     <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" media="all">
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
+    @yield('styles')
 
     <!-- JS -->
     <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
@@ -76,13 +77,12 @@
                         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-left cl-effect-14">
                                 <li><a href="{{ url('/') }}">Home</a></li>
-                                <li><a href="{{ route('students.index') }}">Students</a></li>
-                                <li><a href="{{ route('specialities.index') }}">Specialities</a></li>
                                 <li><a href="{{ route('supervisors.index') }}">Supervisors</a></li>
-                                @guest
-                                    <li><a href="{{ route('login') }}">Login</a></li>
-                                    <li><a href="{{ route('register') }}">Register</a></li>
-                                @else
+
+                                @auth
+                                    <li><a href="{{ route('students.index') }}">Students</a></li>
+                                    <li><a href="{{ route('specialities.index') }}">Specialities</a></li>
+                                    <li><a href="{{ route('theses.index') }}">Results</a></li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -102,7 +102,10 @@
                                             </li>
                                         </ul>
                                     </li>
-                                @endguest
+                                @else
+                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                    <li><a href="{{ route('register') }}">Register</a></li>
+                                @endauth
                             </ul>
                             <div class="clearfix"> </div>
                         </div>
@@ -131,5 +134,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
