@@ -11,7 +11,9 @@
                 <div class="alert alert-info">{{\Session::get('success') }}</div>
             @endif
 
-            <a class="btn btn-small btn-success" href="{{ URL::to('supervisors/create') }}">Add a Supervisor</a>
+            @auth
+                <a class="btn btn-small btn-success" href="{{ URL::to('supervisors/create') }}">Add a Supervisor</a>
+            @endauth
 
             <table class="table table-hover">
                 <thead>
@@ -19,7 +21,9 @@
                     <th>#</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    @auth
                     <th>Actions</th>
+                    @endauth
                 </tr>
                 </thead>
 
@@ -29,6 +33,7 @@
                         <td>{{ $value->id }}</td>
                         <td>{{ $value->first_name }}</td>
                         <td>{{ $value->last_name }}</td>
+                        @auth
                         <td>
                             <a class="btn btn-small btn-info" href="{{ URL::to('supervisors/' . $value->id . '/edit') }}">Edit</a>
 
@@ -38,6 +43,7 @@
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
                         </td>
+                        @endauth
                     </tr>
                 @endforeach
                 </tbody>
