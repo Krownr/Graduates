@@ -57,8 +57,10 @@
                         <div class="top-nav-text">
                             <p>Call Us: <span>+123 456 7890</span></p>
                             <div id="sb-search" class="sb-search">
-                                <form action="#" method="post">
-                                    <input type="search" class="sb-search-input" name="Search" placeholder="Enter your search term..." id="search" required="">
+                                <form action="search_thesis" method="post">
+                                    {{ csrf_field() }}
+
+                                    <input type="search" class="sb-search-input" name="search" placeholder="Search by topic of thesis.." id="search" required="">
                                     <input class="sb-search-submit" type="submit" value="">
                                     <span class="sb-icon-search"> </span>
                                 </form>
