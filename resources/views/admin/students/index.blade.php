@@ -20,6 +20,7 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Faculty Number</th>
+                        <th>Speciality</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -31,6 +32,7 @@
                         <td>{{ $value->first_name }}</td>
                         <td>{{ $value->last_name }}</td>
                         <td>{{ $value->faculty_number }}</td>
+                        <td>{{ $value->speciality->name_long }}</td>
                         <td>
                             <a class="btn btn-small btn-info" href="{{ URL::to('admin/students/' . $value->id . '/edit') }}">Edit</a>
 

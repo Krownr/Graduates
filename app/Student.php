@@ -11,6 +11,14 @@ class Student extends Model
     public $timestamps = false;
 
     /**
+     * Get the student's speciality.
+     */
+    public function speciality()
+    {
+        return $this->belongsTo('App\Speciality');
+    }
+
+    /**
      * Get the students's full name.
      *
      * @return string
