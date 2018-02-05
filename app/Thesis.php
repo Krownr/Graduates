@@ -9,7 +9,7 @@ class Thesis extends Model
     protected $fillable = ['student_id', 'supervisor_id', 'topic', 'mark', 'presentation_date'];
 
     /**
-     * Get the supervisor that wrote the mark
+     * Get the student
      */
     public function student()
     {

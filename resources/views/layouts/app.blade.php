@@ -80,11 +80,11 @@
                             <ul class="nav navbar-nav navbar-left cl-effect-14">
                                 <li><a href="{{ url('/') }}">Home</a></li>
                                 <li><a href="{{ route('supervisors.index') }}">Supervisors</a></li>
+                                <li><a href="{{ route('theses.index') }}">Results</a></li>
 
                                 @auth
                                     <li><a href="{{ route('students.index') }}">Students</a></li>
                                     <li><a href="{{ route('specialities.index') }}">Specialities</a></li>
-                                    <li><a href="{{ route('theses.index') }}">Results</a></li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                             {{ Auth::user()->name }} <span class="caret"></span>

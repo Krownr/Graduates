@@ -16,7 +16,7 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>#</th>
                     <th>Speciality Name</th>
                     <th>Actions</th>
                 </tr>
