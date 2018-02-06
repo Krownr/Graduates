@@ -15,7 +15,7 @@
 
                     @include('admin.partials.error')
 
-                    <form method="post" action="{{ url('admin/students') }}">
+                    <form method="post" action="{{ url('admin/students') }}" enctype="multipart/form-data">
                         <div class="form-group row">
                             {{csrf_field()}}
                             <label for="facultyNumberInput" class="col-sm-2 col-form-label col-form-label-lg">Faculty Number</label>
@@ -52,6 +52,13 @@
                                 </select>
 
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="picture" class="col-sm-2 col-form-label col-form-label-lg">Student Picture</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control form-control-lg" id="picture" placeholder="student picture" name="picture">
                             </div>
                         </div>
 

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreStudent;
 use App\Speciality;
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class StudentsController extends Controller
 {
@@ -43,11 +44,14 @@ class StudentsController extends Controller
      */
     public function store(StoreStudent $request)
     {
+        $path = $request->file('picture')->store('public/uploads');
+
         $student = new Student([
             'first_name' => $request->get('firstName'),
             'last_name' => $request->get('lastName'),
             'faculty_number' => $request->get('facultyNumber'),
-            'speciality_id' => $request->get('speciality_id')
+            'speciality_id' => $request->get('speciality_id'),
+            'picture' => basename($path)
         ]);
 
         $student->save();
@@ -94,6 +98,7 @@ class StudentsController extends Controller
     public function destroy($id)
     {
         $student = Student::find($id);
+        Storage::delete('public/uploads/' . $student->picture);
         $student->delete();
 
         return redirect('/admin/students')->with('success', 'The student was deleted!');

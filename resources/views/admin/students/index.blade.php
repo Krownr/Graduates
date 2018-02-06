@@ -17,6 +17,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Picture</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Faculty Number</th>
@@ -29,6 +30,8 @@
                 @foreach($students as $key => $value)
                     <tr>
                         <td>{{ $value->id }}</td>
+                        <td><img src="{{ asset('imagecache/small/' . $value->picture) }}" alt="Student's Picture" /></td>
+                        <td><img src="{{ asset('storage/uploads/' . $value->picture) }}" alt="Student's Picture" /></td>
                         <td>{{ $value->first_name }}</td>
                         <td>{{ $value->last_name }}</td>
                         <td>{{ $value->faculty_number }}</td>

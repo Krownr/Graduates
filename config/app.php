@@ -177,6 +177,14 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Custom Providers
+         */
+        Collective\Html\HtmlServiceProvider::class,
+        /**
+         * Image Providers
+         */
+        Intervention\Image\ImageServiceProvider::class
     ],
 
     /*
@@ -225,6 +233,16 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        /**
+         * Custom added
+         */
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        /**
+         * Image Resize
+         */
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 
