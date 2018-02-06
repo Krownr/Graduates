@@ -32,7 +32,7 @@
 
                     @include('admin.partials.error')
 
-                    <form method="post" action="{{action('ThesesController@update', $id)}}">
+                    <form method="post" action="{{ action('ThesesController@update', $id) }}">
                         <input name="_method" type="hidden" value="PATCH">
 
                         <div class="form-group row">
@@ -79,15 +79,15 @@
                             {{csrf_field()}}
                             <label for="supervisorId" class="col-sm-2 col-form-label col-form-label-lg">Supervisor</label>
                             <div class="col-sm-10">
-                                <?php if (!empty($supervisors)):?>
+                                @if (!empty($supervisors))
 
                                 <select name="supervisor" class="form-control">
-                                    <?php foreach($supervisors as $key => $value):?>
+                                    @foreach($supervisors as $key => $value)
                                     <option value="{{ $key }}" {{ ($key == $thesis->supervisor_id) ? 'selected' : '' }} >{{ $value }}</option>
-                                    <?php endforeach; ?>
+                                    @endforeach; ?>
                                 </select>
 
-                                <?php endif; ?>
+                                @endif
                             </div>
                         </div>
 

@@ -8,7 +8,7 @@
 
         <div class="bs-docs-example">
             @if (\Session::has('success'))
-                <div class="alert alert-info">{{\Session::get('success') }}</div>
+                <div class="alert alert-info">{{ \Session::get('success') }}</div>
             @endif
 
             @auth
@@ -37,7 +37,7 @@
                         <td>
                             <a class="btn btn-small btn-info" href="{{ URL::to('supervisors/' . $value->id . '/edit') }}">Edit</a>
 
-                            <form action="{{action('SupervisorsController@destroy', $value->id )}}" method="post" class="form-buttons">
+                            <form action="{{ action('SupervisorsController@destroy', $value->id ) }}" method="post" class="form-buttons">
                                 {{csrf_field()}}
                                 <input name="_method" type="hidden" value="DELETE">
                                 <button class="btn btn-danger" type="submit">Delete</button>

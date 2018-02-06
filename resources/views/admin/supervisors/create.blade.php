@@ -15,7 +15,7 @@
 
                     @include('admin.partials.error')
 
-                    <form method="post" action="{{url('supervisors')}}">
+                    <form method="post" action="{{ url('supervisors') }}">
                         <div class="form-group row">
                             {{csrf_field()}}
                             <label for="firstNameInput" class="col-sm-2 col-form-label col-form-label-lg">First Name</label>

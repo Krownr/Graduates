@@ -15,7 +15,7 @@
 
                     @include('admin.partials.error')
 
-                    <form method="post" action="{{action('Admin\SpecialitiesController@update', $id)}}">
+                    <form method="post" action="{{ action('Admin\SpecialitiesController@update', $id) }}">
                         <div class="form-group row">
                             {{csrf_field()}}
                             <input name="_method" type="hidden" value="PATCH">

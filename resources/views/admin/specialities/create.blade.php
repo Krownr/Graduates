@@ -15,7 +15,7 @@
 
                     @include('admin.partials.error')
 
-                    <form method="post" action="{{url('admin/specialities')}}">
+                    <form method="post" action="{{ url('admin/specialities') }}">
                         <div class="form-group row">
                             {{csrf_field()}}
                             <label for="shortNameInput" class="col-sm-2 col-form-label col-form-label-lg">Short Name</label>

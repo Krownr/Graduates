@@ -15,7 +15,7 @@
 
                     @include('admin.partials.error')
 
-                    <form method="post" action="{{url('admin/students')}}">
+                    <form method="post" action="{{ url('admin/students') }}">
                         <div class="form-group row">
                             {{csrf_field()}}
                             <label for="facultyNumberInput" class="col-sm-2 col-form-label col-form-label-lg">Faculty Number</label>
@@ -43,15 +43,15 @@
                         <div class="form-group row">
                             <label for="speciality_id" class="col-sm-2 col-form-label col-form-label-lg">Speciality</label>
                             <div class="col-sm-10">
-                                <?php if (!empty($specialities)):?>
+                                @if (!empty($specialities))
 
                                 <select name="speciality_id" class="form-control">
-                                    <?php foreach($specialities as $key => $value):?>
-                                    <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
-                                    <?php endforeach; ?>
+                                    @foreach($specialities as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
                                 </select>
 
-                                <?php endif; ?>
+                                @endif
                             </div>
                         </div>
 

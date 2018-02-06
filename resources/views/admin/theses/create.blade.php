@@ -32,20 +32,20 @@
 
                     @include('admin.partials.error')
 
-                    <form method="post" action="{{url('theses')}}">
+                    <form method="post" action="{{ url('theses') }}">
                         <div class="form-group row">
                             {{csrf_field()}}
                             <label for="studentId" class="col-sm-2 col-form-label col-form-label-lg">Student</label>
                             <div class="col-sm-10">
-                                <?php if (!empty($students)):?>
+                                @if (!empty($students))
 
                                 <select name="student" class="form-control" id="studentId">
-                                    <?php foreach($students as $key => $value):?>
-                                    <option value="{{ key }}">{{ value }}</option>
-                                    <?php endforeach; ?>
+                                    @foreach($students as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
                                 </select>
 
-                                <?php endif; ?>
+                                @endif
                             </div>
                         </div>
 
@@ -85,15 +85,15 @@
                             {{csrf_field()}}
                             <label for="supervisorId" class="col-sm-2 col-form-label col-form-label-lg">Supervisor</label>
                             <div class="col-sm-10">
-                                <?php if (!empty($supervisors)):?>
+                                @if (!empty($supervisors))
 
                                 <select name="supervisor" class="form-control" id="supervisorId">
-                                    <?php foreach($supervisors as $key => $value):?>
-                                    <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
-                                    <?php endforeach; ?>
+                                    @foreach($supervisors as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
                                 </select>
 
-                                <?php endif; ?>
+                                @endif
                             </div>
                         </div>
 
