@@ -29,3 +29,4 @@ Route::resource('supervisors', 'SupervisorsController');
 Route::resource('theses', 'ThesesController');
 
 Route::post('search_thesis', 'SearchController@search_thesis');
+Route::post('search', 'HomeController@search');
